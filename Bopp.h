@@ -3,5 +3,9 @@
 struct Bopp{
     const char *cmd;
 };
-static int Pre();
+static int Program();
+#define PROGRAM 190
+#define PROGRAM_NOT_EXISTS 191
+#define PROGRAM_ERROR 192
+
 #endif

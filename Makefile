@@ -1,15 +1,17 @@
 CC = gcc
 CFLAGS = -Wall -g
-LIB = src/libbopp.so
+LIB = libbopp.so
+OUT = bopp
 SRC = Bopp.c
 
-all: $(LIB) bopp
+all: $(LIB) $(OUT)
 
 $(LIB): $(SRC)
+	echo "Compiling to lib"
 	$(CC) $(CFLAGS) -shared -o $(LIB) $(SRC)
 
-bopp: $(SRC) $(LIB)
-	$(CC) $(CFLAGS) -o bopp $(SRC) -L. -lbopp
+$(OUT): $(SRC)
+	$(CC) $(CFLAGS) -o $(OUT) $(SRC)
 
 clean:
-	rm -f bopp $(LIB)
+	rm -f $(OUT) $(LIB)
