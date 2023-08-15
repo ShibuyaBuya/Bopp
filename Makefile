@@ -1,17 +1,17 @@
 CC = gcc
-CFLAGS = -Wall -g
+CFLAGS = -Wall -g -fPIC
 LIB = libbopp.so
-OUT = bopp
+OUT = a.o
 SRC = Bopp.c
 
 all: $(LIB) $(OUT)
 
 $(LIB): $(SRC)
 	echo "Compiling to lib"
-	$(CC) $(CFLAGS) -shared -o $(LIB) $(SRC)
+	$(CC) $(CFLAGS) -shared $(LIB) $(SRC) -lncurses
 
 $(OUT): $(SRC)
-	$(CC) $(CFLAGS) -o $(OUT) $(SRC)
+	$(CC) $(CFLAGS) $(SRC) -lncurses
 
 clean:
 	rm -f $(OUT) $(LIB)
